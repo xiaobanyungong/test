@@ -1,0 +1,28 @@
+1.可以在实体类的类名上加上@TableName注解进行标识。
+
+3.1.2全局设置表名前缀
+一般一个项目表名的前缀都是统一风格的，这个时候如果一个个设置就太麻烦了。我们可以通过配置来设置全局的表名前缀。
+例如:
+如果一个项目中所有的表名相比于类名都是多了个前缀:tb_。这可以使用如下方式配置
+mybatis-plus :
+global-config:
+db-config:#表名前缀
+tab1e-prefix: tb_
+
+
+
+
+3.2设置主键生成策略
+3.2.1单独设置
+默认情况下使用MP插入数据时，如果在我们没有设置主键生成策略的情况下默认的策略是基于雪花算法的自增id。
+如果我们需要使用别的策略可以在定义实体类时，在代表主键的字段上加上@Tablerd注解，使用其type属性指定主键生成策略。|
+例如:
+我们要设置主键自动增长则可以设置如下
+Data
+@NoArgs Constructor@A77Args Constructorpub7ic class user i
+@Tab1eId(type = IdType.AUTO)private Long id;
+l / .. ...
+全部主键策略定义在了枚举类IdType 中，IdType有如下的取值
+ AUTO
+数据库ID自增，依赖于数据库。该类型请确保数据库设置了ID自增否则无效
+NONE
